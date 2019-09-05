@@ -77,9 +77,3 @@ while cantitat>0:
     cantitat -=1
     numero=input()
     print(nPasesKaprekar(numero))
-#nPasades=0
-#print("pasades: ", nPasades," numero actual: ",numero)
-
-#print(nPasesKaprekar(numero))
-
-#print(esRepiDigit('1141'))
