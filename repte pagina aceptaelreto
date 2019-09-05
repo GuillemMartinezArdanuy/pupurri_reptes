@@ -1,0 +1,85 @@
+# solucio de Guillem Martinez Ardanuy a el repte: https://www.aceptaelreto.com/problem/statement.php?id=100
+
+def esRepiDigit(numero):
+    list(numero)
+    j=0
+    try:
+        while len(str(numero)) > j - 1:
+            j += 1
+            if numero[j] != numero[j + 1]:
+                return False
+    except:
+        return True
+
+
+def cuatreCaracters(numero):
+    if(len(str(numero)))==4:
+        return numero
+    elif(len(str(numero)))<4:
+        diferencia=4-len(str(numero))
+        numero='0'*diferencia+numero
+        return numero
+    else:
+        return None
+
+def ascendent(numero):
+    lstNumero = list(numero)
+    i = 0
+    numPasses=0
+    while i < len(lstNumero):
+        try:
+            if lstNumero[i] > lstNumero[i + 1]:
+                lstNumero[i], lstNumero[i + 1] = lstNumero[i + 1], lstNumero[i]
+                i += 1
+            else:
+                i += 1
+                if numPasses==len(lstNumero):
+                    return str(''.join(lstNumero))
+                    break
+        except:
+            i = 0
+            numPasses+=1
+
+def descendent(numero):
+    lstNumero = list(numero)
+    i = 0
+    numPasses=0
+    while i < len(lstNumero):
+        try:
+            if lstNumero[i] < lstNumero[i + 1]:
+                lstNumero[i], lstNumero[i + 1] = lstNumero[i + 1], lstNumero[i]
+                i += 1
+            else:
+                i += 1
+                if numPasses==len(lstNumero):
+                    return str(''.join(lstNumero))
+                    break
+        except:
+            i = 0
+            numPasses+=1
+
+def nPasesKaprekar(numero):
+    nPasades = 0
+    if esRepiDigit(numero):
+        return '8'
+    while numero != '6174':
+        nPasades += 1
+        numero = cuatreCaracters(numero)
+        numAsc = ascendent(numero)
+        numDesc = descendent(numero)
+        numero = str(int(numDesc) - int(numAsc))
+    return nPasades
+
+numero=''
+cantitat=int(input(""))
+while cantitat>0:
+    nPasades = 0
+    cantitat -=1
+    numero=input()
+    print(nPasesKaprekar(numero))
+#nPasades=0
+#print("pasades: ", nPasades," numero actual: ",numero)
+
+#print(nPasesKaprekar(numero))
+
+#print(esRepiDigit('1141'))
