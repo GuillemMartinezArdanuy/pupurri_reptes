@@ -1,0 +1,33 @@
+#Autor Guillem Ardanuy Martinez , repte de sololearn, usuari que proposa el repte: All About Python, el que proposa la solucio es Guillem Ardanuy Martinez
+#weekend quiz #01
+# this is my second solution, with dicctionary who returns caracter and number of repetition of this missing caracter in the other string:D
+
+# ENJOY! keep koding! NEVER SURRENDER!!! ^^
+
+diccioCharQuant={} # la clau sera el caracter, la key sera cuantes vegades no hi es a laltre string
+def contador(string1,string2):
+    caracterAuxiliar=''
+    for i in string1:  # recorrem l'string
+        if i not in string2:
+            #auxiliarCont +=1
+            if i in diccioCharQuant.keys():
+                auxiliarCont = diccioCharQuant[i]
+                auxiliarCont+=1
+                diccioCharQuant[i] = auxiliarCont
+            else:
+                diccioCharQuant[i]=1
+    diccioCharQuantMostrar=diccioCharQuant.copy()
+    diccioCharQuant.clear()
+    return diccioCharQuantMostrar
+#------------------------FI CONTADOR I AFEGIR CARACTER I CONTAR NUMERO DE REPETICIONS-------------------------------
+
+def anagrama(string1,string2):
+    dictionariOcurrenciesString1=contador(string1,string2)
+    dictionariOcurrenciesString2=contador(string2,string1)
+
+    return dictionariOcurrenciesString1,dictionariOcurrenciesString2
+      #----------------------FI FUNCIO ANAGRAMA----------------------#
+
+result=anagrama(string1=input("string1 ? "),string2=input("string 2 ?")) # cridem la funcio i els parametres ja entra el usuari
+print("diccionari caracters que falten a string2 i quantitat de vegades que es repeteix elements string1 en string 2 : {}\ndiccionari caracters que falten a string1 i quantitat de vegades que es repeteix elements string1 en string 1 : {}".format(result[0],result[1]))
+
